@@ -9,7 +9,7 @@ import openWeather from './openWeather.js'
 
 // Initialize variables that hold state data
 let _weatherData
-let _location
+const _location = 'Salt Lake City'
 const _displayUnits = 'fahrenheit'
 const _apiKeys = {
   openWeatherKey: process.env.OPEN_WEATHER_KEY || null,

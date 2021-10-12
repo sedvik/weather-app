@@ -18,14 +18,15 @@ function _fetchWeatherData (openWeatherKey, location) {
 async function _processData (jsonResponse, giphyKey) {
   const weatherData = {}
   const response = await jsonResponse.json()
+  console.log(response)
 
   // Extract relevant data from processed response object
   weatherData.temp = response.main.temp
-  weatherData.weather = response.weather.main
-  weatherData.description = response.weather.description
+  weatherData.weather = response.weather[0].main
+  weatherData.description = response.weather[0].description
 
   // Query giphy for a relevant weather gif
-  const imageUrl = await giphy.getWeatherGif(giphyKey, weatherData.description)
+  const imageUrl = await giphy.getWeatherGif(giphyKey, weatherData.weather)
   weatherData.imageUrl = imageUrl
 
   return weatherData
