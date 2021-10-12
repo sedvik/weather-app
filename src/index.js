@@ -1,5 +1,5 @@
 import './css/reset.css'
 import './css/style.css'
-import { key } from './modules/app.js'
+import app from './modules/app.js'
 
-console.log(key)
+app.getWeatherData()
