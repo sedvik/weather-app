@@ -1,3 +1,152 @@
+/* General Styles */
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: rgb(237, 246, 250);
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
 h1 {
-  color: red;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Header Styles */
+header {
+  height: 70px;
+  text-align: center;
+  background-color: lightskyblue;
+  border-bottom: 1px solid rgb(32, 49, 85);
+}
+
+header h1 {
+  line-height: 70px;
+  color: #fff;
+}
+
+/* Main Styles */
+main {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto 0 auto;
+}
+
+#api-form,
+#search-form,
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgb(32, 49, 85);
+  border-radius: 3px;
+  background-color:rgb(205, 220, 252);
+}
+
+#search-form,
+#unit-toggle,
+#content {
+  margin-top: 1rem;
+}
+
+#api-form *,
+#search-form * {
+  margin-bottom: 0.4rem;
+}
+
+/* Api Form */
+#toggle-api-form {
+  margin-bottom: 0.5rem;
+}
+
+#add-keys-btn {
+  width: 40px;
+  margin-bottom: 0rem;
+}
+
+/* Search Form */
+#search-btn {
+  margin-bottom: 0rem;
+}
+
+/* Unit Toggle */
+#unit-toggle {
+  display: flex;
+  border: 1px solid rgb(32, 49, 85);
+  border-radius: 3px;
+}
+
+#unit-toggle button {
+  font-size: 1.1rem;
+  border: none;
+  background: none;
+  padding: 0.5rem;
+}
+
+#unit-toggle button.selected {
+  background-color: rgb(205, 220, 252);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+#unit-toggle button:hover {
+  background-color: rgb(167, 174, 190);
+}
+
+/* Content */
+#content {
+  width: 80%;
+}
+
+#content h2 {
+  margin-bottom: 0.6rem;
+}
+
+#content h3 {
+  font-weight: bold;
+}
+
+.description h3 {
+  text-align: center;
+}
+
+.temperature,
+.weather,
+.description,
+.gif-container {
+  margin: 0.4rem;
+}
+
+.temperature,
+.weather {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temperature p,
+.weather p,
+.description p {
+  font-size: 1.2rem;
 }

@@ -14,6 +14,11 @@ function _fetchGiphyData (giphyKey, searchKeyword) {
 }
 
 async function _processData (jsonResponse) {
+  if (!jsonResponse.ok) {
+    // ALERT USER THROUGH DISPLAYCONTROLLER IF THE RESPONSE IS INVALID
+    return
+  }
+
   const response = await jsonResponse.json()
   return response.data.images.original.url
 }

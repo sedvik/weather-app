@@ -11,11 +11,14 @@ function _fetchWeatherData (openWeatherKey, location) {
   const jsonResponse = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${uriEncodedLocation}&appid=${openWeatherKey}`, {
     mode: 'cors'
   })
-
   return jsonResponse
 }
 
 async function _processData (jsonResponse, giphyKey) {
+  if (!jsonResponse.ok) {
+    // ALERT USER THROUGH DISPLAYCONTROLLER IF THE RESPONSE IS INVALID
+    return
+  }
   const weatherData = {}
   const response = await jsonResponse.json()
   console.log(response)

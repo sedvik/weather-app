@@ -9,15 +9,24 @@ import openWeather from './openWeather.js'
 
 // Initialize variables that hold state data
 let _weatherData
-const _location = 'Salt Lake City'
-const _displayUnits = 'fahrenheit'
+let _location = 'Helsinki'
+let _displayUnits = 'fahrenheit'
 const _apiKeys = {
   openWeatherKey: process.env.OPEN_WEATHER_KEY || null,
   giphyKey: process.env.GIPHY_KEY || null
 }
 
+const _exampleLocations = [
+  'Salt Lake City',
+  'Denver',
+  'Helsinki',
+  'Tokyo'
+]
+
 function _getStateData () {
-  // transform weather data object depending on specified _displayUnits
+  let location
+
+  // Transform weather data object depending on specified _displayUnits
   const weatherData = Object.assign({}, _weatherData)
 
   if (weatherData.temp === undefined || weatherData.temp === null) {
@@ -28,9 +37,16 @@ function _getStateData () {
     weatherData.temp = _convertKelvinToCelsius(weatherData.temp)
   }
 
+  // Default to a random location if location is not provided
+  if (_location === '' || _location === undefined) {
+    location = _getRandomLocation()
+  } else {
+    location = _location
+  }
+
   return {
+    location,
     weatherData: _weatherData,
-    location: _location,
     displayUnits: _displayUnits,
     apiKeys: _apiKeys
   }
@@ -47,7 +63,12 @@ function _convertKelvinToCelsius (tempK) {
 function _setWeatherData (weatherData) {
   _weatherData = weatherData
 
-  // Call render
+  // Render the new weather data
+  displayController.renderWeather(_getStateData())
+}
+
+function _getRandomLocation () {
+  return _exampleLocations[Math.floor(Math.random() * _exampleLocations.length)]
 }
 
 /*
@@ -57,9 +78,24 @@ function _setWeatherData (weatherData) {
  */
 
 async function getWeatherData () {
+  // Call renderLoading to display a loading symbol while api data is retrieved
+  displayController.renderLoading()
+
   const weatherData = await openWeather.getWeatherData(_getStateData())
-  console.log(weatherData)
   _setWeatherData(weatherData)
+}
+
+function setLocation (newLocation) {
+  _location = newLocation
+}
+
+function setDisplayUnits (displayUnits) {
+  _displayUnits = displayUnits
+}
+
+function setAPIKeys (openWeatherKey, giphyKey) {
+  _apiKeys.openWeatherKey = openWeatherKey
+  _apiKeys.giphyKey = giphyKey
 }
 
 function init () {
@@ -69,7 +105,10 @@ function init () {
 
 const app = {
   init,
-  getWeatherData
+  getWeatherData,
+  setLocation,
+  setDisplayUnits,
+  setAPIKeys
 }
 
 export default app
