@@ -13,6 +13,7 @@ Valid trial API keys for the OpenWeather API and the Giphy API must be provided 
 2. Clone this repository and create a .env file with API keys listed in the following format:
 
 OPEN_WEATHER_KEY='YOUR OPENWEATHER KEY HERE'
+
 GIPHY_KEY='YOUR GIPHY KEY HERE'
 
 Once the API keys have been added, simply input a location and hit the "Search" button. The temperature, weather, and a gif to match the weather will be populated. Displayed temperature units can be toggled between fahrenheit and celsius at any time.
