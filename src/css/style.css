@@ -51,11 +51,22 @@ main {
   margin: 1rem auto 0 auto;
 }
 
-#api-form,
+/* Initially set api-form display to none */
+
+#api-form {
+  display: none;
+}
+
 #search-form,
 #content {
   display: flex;
+}
+
+#api-form,
+#search-form,
+#content {
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
   border: 1px solid rgb(32, 49, 85);
@@ -114,8 +125,15 @@ main {
 }
 
 /* Content */
+#content-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #content {
-  width: 80%;
+  width: 100%;
 }
 
 #content h2 {
@@ -149,4 +167,9 @@ main {
 .weather p,
 .description p {
   font-size: 1.2rem;
+}
+
+.loading-gif {
+  width: 30px;
+  height: auto;
 }

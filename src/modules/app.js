@@ -9,7 +9,7 @@ import openWeather from './openWeather.js'
 
 // Initialize variables that hold state data
 let _weatherData
-let _location = 'Helsinki'
+let _location
 let _displayUnits = 'fahrenheit'
 const _apiKeys = {
   openWeatherKey: process.env.OPEN_WEATHER_KEY || null,
@@ -46,7 +46,7 @@ function _getStateData () {
 
   return {
     location,
-    weatherData: _weatherData,
+    weatherData: weatherData,
     displayUnits: _displayUnits,
     apiKeys: _apiKeys
   }
@@ -78,9 +78,6 @@ function _getRandomLocation () {
  */
 
 async function getWeatherData () {
-  // Call renderLoading to display a loading symbol while api data is retrieved
-  displayController.renderLoading()
-
   const weatherData = await openWeather.getWeatherData(_getStateData())
   _setWeatherData(weatherData)
 }
@@ -91,6 +88,9 @@ function setLocation (newLocation) {
 
 function setDisplayUnits (displayUnits) {
   _displayUnits = displayUnits
+
+  // Call render to display the new units
+  displayController.renderWeather(_getStateData())
 }
 
 function setAPIKeys (openWeatherKey, giphyKey) {
@@ -99,8 +99,7 @@ function setAPIKeys (openWeatherKey, giphyKey) {
 }
 
 function init () {
-  const stateData = _getStateData()
-  return stateData
+  displayController.init()
 }
 
 const app = {
