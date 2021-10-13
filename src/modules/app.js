@@ -40,6 +40,7 @@ function _getStateData () {
   // Default to a random location if location is not provided
   if (_location === '' || _location === undefined) {
     location = _getRandomLocation()
+    setLocation(location)
   } else {
     location = _location
   }
@@ -89,8 +90,10 @@ function setLocation (newLocation) {
 function setDisplayUnits (displayUnits) {
   _displayUnits = displayUnits
 
-  // Call render to display the new units
-  displayController.renderWeather(_getStateData())
+  // Call render to display the new units if weather data exists
+  if (_weatherData !== undefined) {
+    displayController.renderWeather(_getStateData())
+  }
 }
 
 function setAPIKeys (openWeatherKey, giphyKey) {
@@ -98,12 +101,7 @@ function setAPIKeys (openWeatherKey, giphyKey) {
   _apiKeys.giphyKey = giphyKey
 }
 
-function init () {
-  displayController.init()
-}
-
 const app = {
-  init,
   getWeatherData,
   setLocation,
   setDisplayUnits,

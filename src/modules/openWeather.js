@@ -21,7 +21,6 @@ async function _processData (jsonResponse, giphyKey) {
   }
   const weatherData = {}
   const response = await jsonResponse.json()
-  console.log(response)
 
   // Extract relevant data from processed response object
   weatherData.temp = response.main.temp

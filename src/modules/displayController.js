@@ -51,6 +51,15 @@ function _search () {
 }
 
 function _changeActiveUnit (e) {
+  const clickedBtnId = e.target.id
+  const otherBtnId = clickedBtnId === 'fahrenheit' ? 'celsius' : 'fahrenheit'
+  const otherBtn = document.getElementById(otherBtnId)
+
+  // toggle "selected" class of both unit buttons
+  e.target.classList.toggle('selected')
+  otherBtn.classList.toggle('selected')
+
+  // Change application active Units
   app.setDisplayUnits(e.target.id)
 }
 
@@ -106,8 +115,6 @@ function renderWeather (data) {
     weatherData,
     displayUnits
   } = data
-
-  console.log(data)
 
   const contentContainer = document.querySelector('#content-container')
   contentContainer.textContent = ''

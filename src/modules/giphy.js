@@ -16,6 +16,7 @@ function _fetchGiphyData (giphyKey, searchKeyword) {
 async function _processData (jsonResponse) {
   if (!jsonResponse.ok) {
     // ALERT USER THROUGH DISPLAYCONTROLLER IF THE RESPONSE IS INVALID
+    console.log('hi from giphy.js')
     return
   }
 
