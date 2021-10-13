@@ -51,8 +51,6 @@ main {
   margin: 1rem auto 0 auto;
 }
 
-/* Initially set api-form display to none */
-
 #api-form {
   display: none;
 }

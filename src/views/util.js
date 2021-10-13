@@ -36,7 +36,7 @@ const domUtil = (function () {
             attribute2: String
         }
     }
-    */
+   */
   function create (tag, text, options) {
     const elem = document.createElement(tag)
     elem.textContent = text

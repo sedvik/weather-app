@@ -2,8 +2,8 @@ const path = require('path')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production',
+  devtool: 'source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),

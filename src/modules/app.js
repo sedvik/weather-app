@@ -47,7 +47,7 @@ function _getStateData () {
 
   return {
     location,
-    weatherData: weatherData,
+    weatherData,
     displayUnits: _displayUnits,
     apiKeys: _apiKeys
   }
