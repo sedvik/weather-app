@@ -1,4 +1,5 @@
 import giphy from './giphy.js'
+import displayController from './displayController.js'
 
 /*
  *
@@ -16,7 +17,8 @@ function _fetchWeatherData (openWeatherKey, location) {
 
 async function _processData (jsonResponse, giphyKey) {
   if (!jsonResponse.ok) {
-    // ALERT USER THROUGH DISPLAYCONTROLLER IF THE RESPONSE IS INVALID
+    const message = `Received an invalid response (status ${jsonResponse.status}) from the OpenWeather API. It is likely that a valid API key was not provided. See this project's README for further instructions.`
+    displayController.alert(message)
     return
   }
   const weatherData = {}

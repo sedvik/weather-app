@@ -122,9 +122,14 @@ function renderWeather (data) {
   contentContainer.appendChild(content)
 }
 
+function alert (message) {
+  window.alert(message)
+}
+
 const displayController = {
   init,
-  renderWeather
+  renderWeather,
+  alert
 }
 
 export default displayController

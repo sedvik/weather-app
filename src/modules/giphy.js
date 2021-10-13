@@ -1,3 +1,5 @@
+import displayController from './displayController.js'
+
 /*
  *
  * Private methods/variables
@@ -15,8 +17,8 @@ function _fetchGiphyData (giphyKey, searchKeyword) {
 
 async function _processData (jsonResponse) {
   if (!jsonResponse.ok) {
-    // ALERT USER THROUGH DISPLAYCONTROLLER IF THE RESPONSE IS INVALID
-    console.log('hi from giphy.js')
+    const message = `Received an invalid response (status ${jsonResponse.status}) from the giphy API. Temperature data is still available. It is likely that a valid API key was not provided. See this project's README for further instructions.`
+    displayController.alert(message)
     return
   }
 

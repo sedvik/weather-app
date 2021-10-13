@@ -173,3 +173,8 @@ main {
   width: 30px;
   height: auto;
 }
+
+.gif-container img {
+  max-width: 100%;
+  height: auto;
+}
